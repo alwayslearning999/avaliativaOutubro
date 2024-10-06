@@ -8,38 +8,98 @@
         border-color: blue;
         margin-top: 9px;
        }
+
        body{
         background-image: linear-gradient(to right, rgb(106, 195, 217), rgb(140, 56, 90));
        }
+
        form{
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
+        width: 300px;
        }
+
     </style>
+
+    <script>
+        var animes = [];
+        var qt = 0;
+
+        function dadosAnim(event){
+            var nome = document.getElementById("nomeA").value;
+            var genero = document.getElementById("genero").options[document.getElementById("genero").selectedIndex].innerHTML;
+            var anoL = document.getElementById("anoL").value;
+            var nota = document.getElementById("notaa").value;
+
+            animes.push({
+                "nome":nome,
+                "genero": genero,
+                "anoL": anoL,
+                "nota": nota
+            });
+            
+            event.preventDefault();
+
+            limparCampos();
+            exibirAni();
+        }
+
+        function limparCampos(){
+            document.getElementById("nomeA").value = "";
+            document.getElementById("genero").selectedIndex = 0;
+            document.getElementById("anoL").value = "";
+            document.getElementById("notaa");value = "";
+        }
+
+        function exibirAni(){
+            var colunaUm = animes[qt].nome; 
+            var colunaDois = animes[qt].genero;
+            var colunaTres = animes[qt].anoL;
+            var colunaQuatro = animes[qt].nota;
+
+            var item = document.createElement("tr");
+            
+            var colUm = item.appendChild(document.createElement('td'));
+            var colDo = item.appendChild(document.createElement('td'));
+            var colTr = item.appendChild(document.createElement('td'));
+            var colQu = item.appendChild(document.createElement('td'));
+
+            colUm.innerHTML = colunaUm;
+            colDo.innerHTML = colunaDois;
+            colTr.innerHTML = colunaTres;
+            colQu.innerHTML = colunaQuatro;
+
+            document.getElementById("tabe").appendChild(item);
+            qt++;
+        }
+
+    </script>
 
     <title>Tabela de Animes</title>
 </head>
 <body>
     <h1>Nos informe seus Animes Favoritos !</h1>
-    <form>
+    <form method="post" name="animess">
         <label for="nomeAnime">Nome do Anime: </label>
         <input type="text" name="nomeAnime" id="nomeA">
-        <label for="genero" id="genero">Genero do Anime: </label>
-        <select name="" id="">
-            <option>Não Selecionado</option>
-            <option>Shõjo (romance / poderes magicos)</option>
-            <option>Josei (romance realista)</option>
-            <option>Shounen  (ação/romance/drama/esporte)</option>
-            <option>Seinen (assuntos pesados)</option>
-            <option>Kodomo (temas infantis)</option>
+        <label for="gen">Genero do Anime: </label>
+        <select name="gen" id="genero">
+            <option value="">Não Selecionado</option>
+            <option value="sh">Shõjo (romance / poderes magicos)</option>
+            <option value="jo">Josei (romance realista)</option>
+            <option value="sh">Shounen  (ação/romance/drama/esporte)</option>
+            <option value="se">Seinen (assuntos pesados)</option>
+            <option value="ko">Kodomo (temas infantis)</option>
         </select>
         <label for="anoLancamento">Ano do Lançamento: </label>
         <input type="number" name="anoLancamento" id="anoL" min="1967" max="2024">
         <label for="nota">De uma nota de 0 a 10: </label>
-        <input type="number" name="nota" id="nota" min="0" max="10">
-    </form>
-    <table class="tabela" border="2px">
+        <input type="number" name="nota" id="notaa" min="0" max="10">
+
+        <button onclick="dadosAnim(event)">Enviar para tabela</button>
+    
+
+    <table class="tabela" border="2px" id="tabe">
         <thead>
             <tr>
                 <th>Nome do Anime</th>
@@ -49,5 +109,6 @@
             </tr>
         </thead>
     </table>
+    </form>
 </body>
 </html>
