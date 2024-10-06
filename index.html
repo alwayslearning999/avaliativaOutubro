@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       table{
+        border-color: blue;
+        margin-top: 9px;
+       }
+       body{
+        background-image: linear-gradient(to right, rgb(106, 195, 217), rgb(140, 56, 90));
+       }
+       form{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+       }
+    </style>
+
+    <title>Tabela de Animes</title>
+</head>
+<body>
+    <h1>Nos informe seus Animes Favoritos !</h1>
+    <form>
+        <label for="nomeAnime">Nome do Anime: </label>
+        <input type="text" name="nomeAnime" id="nomeA">
+        <label for="genero" id="genero">Genero do Anime: </label>
+        <select name="" id="">
+            <option>Não Selecionado</option>
+            <option>Shõjo (romance / poderes magicos)</option>
+            <option>Josei (romance realista)</option>
+            <option>Shounen  (ação/romance/drama/esporte)</option>
+            <option>Seinen (assuntos pesados)</option>
+            <option>Kodomo (temas infantis)</option>
+        </select>
+        <label for="anoLancamento">Ano do Lançamento: </label>
+        <input type="number" name="anoLancamento" id="anoL" min="1967" max="2024">
+        <label for="nota">De uma nota de 0 a 10: </label>
+        <input type="number" name="nota" id="nota" min="0" max="10">
+    </form>
+    <table class="tabela" border="2px">
+        <thead>
+            <tr>
+                <th>Nome do Anime</th>
+                <th>Gênero do Anime</th>
+                <th>Ano do Lançamento</th>
+                <th>Nota do Anime</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
